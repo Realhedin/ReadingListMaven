@@ -1,6 +1,8 @@
 package com.example.controllers;
 
 
+import java.util.List;
+
 import com.example.domain.Book;
 import com.example.jpa.ReadingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/readingList")
@@ -35,7 +35,7 @@ public class ReadingListController {
     public String addToReadingList(@PathVariable("reader") String reader, Book book) {
         book.setReader(reader);
         readingListRepository.save(book);
-        return "redirect:/readingList";
+        return "redirect:/readingList/{reader}";
     }
 
 
