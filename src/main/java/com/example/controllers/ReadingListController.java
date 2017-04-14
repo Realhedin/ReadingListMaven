@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ReadingListController {
 
 
+    private static String USER = "Tom";
+
+
     private ReadingListRepository readingListRepository;
 
 
-    @RequestMapping(value =  "/{reader}", method = RequestMethod.GET)
-    public String findByReader(@PathVariable("reader") String reader, Model model) {
+    @RequestMapping( method = RequestMethod.GET)
+    public String findByReader( Model model) {
 
-        List<Book> readingList = readingListRepository.findByReader(reader);
+        List<Book> readingList = readingListRepository.findByReader(USER);
         if (readingList != null) {
             model.addAttribute("books", readingList);
         }
@@ -31,11 +34,11 @@ public class ReadingListController {
     }
 
 
-    @RequestMapping(value = "/{reader}",method = RequestMethod.POST)
-    public String addToReadingList(@PathVariable("reader") String reader, Book book) {
-        book.setReader(reader);
+    @RequestMapping(method = RequestMethod.POST)
+    public String addToReadingList( Book book) {
+        book.setReader(USER);
         readingListRepository.save(book);
-        return "redirect:/readingList/{reader}";
+        return "redirect:/readingList";
     }
 
 
