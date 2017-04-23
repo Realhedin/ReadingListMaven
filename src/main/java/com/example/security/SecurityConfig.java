@@ -28,6 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //TODO find way to enable csrf
         http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/readingList").access("hasRole('READER')")
+                .antMatchers("/readingList/").access("hasRole('READER')")
                 .antMatchers("/").access("hasRole('READER')")
                 .antMatchers("/**").permitAll()
                 .and()
