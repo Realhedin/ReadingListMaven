@@ -1,0 +1,26 @@
+#do not use banner and cache
+spring:
+  main:
+    banner-mode: 'off'
+  thymeleaf:
+    cache: 'false'
+
+#use https
+#prerequirement: $keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
+# COMMENT to return to HTTP.
+server:
+  port: 8443
+  ssl:
+    key-store: file:C:/Users/Dmitrii/mykeys.jks
+    key-store-password: test123
+    key-password: test123
+
+#changing logging level from logback.xml
+logging:
+  #path: D:/Mitya/work/JavaProjects/SpringBootInAction/ReadingListMaven
+  #file: BookWorm.log
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: WARN
