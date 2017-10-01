@@ -4,16 +4,22 @@ spring:
     banner-mode: 'off'
   thymeleaf:
     cache: 'false'
+  #changing DB access
+#  datasource:
+#      url: jdbc:mysql://localhost/readinglist
+#      username: dbuser
+#      password: dbpass
+#      driver-class-name: com.mysql.jdbc.Driver
 
 #use https
 #prerequirement: $keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
 # COMMENT to return to HTTP.
-server:
-  port: 8443
-  ssl:
-    key-store: file:C:/Users/Dmitrii/mykeys.jks
-    key-store-password: test123
-    key-password: test123
+#server:
+#  port: 8443
+#  ssl:
+#    key-store: file:C:/Users/Dmitrii/mykeys.jks
+#    key-store-password: test123
+#    key-password: test123
 
 #changing logging level from logback.xml
 logging:
