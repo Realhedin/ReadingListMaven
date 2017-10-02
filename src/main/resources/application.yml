@@ -1,0 +1,53 @@
+#do not use banner and cache
+spring:
+  main:
+    banner-mode: 'off'
+  thymeleaf:
+    cache: 'false'
+#  changing DB access
+#  datasource:
+#      url: jdbc:mysql://localhost/readinglist
+#      username: dbuser
+#      password: dbpass
+#      driver-class-name: com.mysql.jdbc.Driver
+#
+#use https
+#prerequirement: $keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
+# COMMENT to return to HTTP.
+server:
+  port: 8443
+  ssl:
+    key-store: file:C:/Users/Dmitrii/mykeys.jks
+    key-store-password: test123
+    key-password: test123
+#
+#changing logging level from logback.xml
+#logging:
+#  #path: D:/Mitya/work/JavaProjects/SpringBootInAction/ReadingListMaven
+#  #file: BookWorm.log
+#  level:
+#    root: DEBUG
+#    org:
+#      springframework:
+#        security: WARN
+
+logging:
+  level:
+    root: INFO
+---
+spring:
+  profiles: development
+logging:
+  level:
+    root: DEBUG
+---
+spring:
+  profiles: production
+logging:
+#  path
+  file: BookWorm.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    root: WARN

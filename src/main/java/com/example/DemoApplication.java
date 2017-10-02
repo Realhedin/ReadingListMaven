@@ -14,6 +14,7 @@ public class DemoApplication extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "/readingList");
+		registry.addViewController("/login").setViewName("login");
+		registry.addRedirectViewController("/", "/readingList/");
 	}
 }
