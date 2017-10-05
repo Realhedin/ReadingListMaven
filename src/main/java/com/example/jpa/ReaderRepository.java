@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *         Time: 19:26
  */
 public interface ReaderRepository extends JpaRepository<Reader, String> {
+
+    Reader findByFullname(String fullname);
 }
